@@ -1,8 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import SectionWrapper from './SectionWrapper';
-import StarryBackground from './StarryBackground';
+import WaveBackground from './WaveBackground';
 
 const features = [
   { number: '01', title: 'Веб-разработка', description: 'Современные технологии' },
@@ -13,8 +12,8 @@ const features = [
 
 export default function HeroSection() {
   return (
-    <SectionWrapper className="bg-[#111113] min-h-screen flex items-center relative overflow-hidden">
-      <StarryBackground />
+    <div className="bg-[#111113] min-h-screen flex items-center relative overflow-hidden">
+      <WaveBackground />
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div 
@@ -71,22 +70,29 @@ export default function HeroSection() {
                   transition={{ delay: 0.7 }}
                   className="flex flex-col sm:flex-row gap-5"
                 >
-                  <button className="relative px-8 py-5 bg-[#feda6a] text-[#111113] text-sm uppercase tracking-wider font-medium overflow-hidden rounded-sm shadow-lg shadow-[#feda6a]/10 hover:shadow-[#feda6a]/30 transition-all duration-300">
-                    <div className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-20 transition-opacity duration-300" />
-                    <span className="inline-flex items-center">
+                  <button className="group relative px-8 py-5 bg-[#feda6a] text-[#111113] text-sm uppercase tracking-wider font-medium overflow-hidden rounded-sm">
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+                    <div className="absolute inset-0 bg-[#feda6a] group-hover:bg-[#feda6a]/90 transition-colors duration-300" />
+                    <span className="relative z-10 inline-flex items-center">
                       Смотреть кейсы
-                      <svg className="ml-3 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <svg className="ml-3 w-4 h-4 transform group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
                     </span>
+                    <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-[#111113]/30" />
+                    <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-[#111113]/30" />
                   </button>
-                  <button className="relative px-8 py-5 bg-transparent border border-[#feda6a]/30 text-[#d4d4dc] text-sm uppercase tracking-wider font-medium overflow-hidden rounded-sm hover:border-[#feda6a]/70 transition-all duration-300">
-                    <span className="inline-flex items-center">
+                  <button className="group relative px-8 py-5 bg-transparent text-[#d4d4dc] text-sm uppercase tracking-wider font-medium overflow-hidden rounded-sm">
+                    <div className="absolute inset-0 border border-[#feda6a]/30 group-hover:border-[#feda6a]/70 transition-colors duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#feda6a]/0 via-[#feda6a]/5 to-[#feda6a]/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+                    <span className="relative z-10 inline-flex items-center">
                       Оставить заявку
-                      <svg className="ml-3 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <svg className="ml-3 w-4 h-4 transform group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                       </svg>
                     </span>
+                    <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-[#feda6a]/30 group-hover:border-[#feda6a]/70 transition-colors duration-300" />
+                    <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-[#feda6a]/30 group-hover:border-[#feda6a]/70 transition-colors duration-300" />
                   </button>
                 </motion.div>
               </div>
@@ -143,6 +149,6 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </div>
-    </SectionWrapper>
+    </div>
   );
 } 
