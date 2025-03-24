@@ -341,18 +341,35 @@ export default function ProjectPage() {
               </div>
 
               <div className="space-y-4">
-                <Link href="/#projects" className="block w-full">
-                  <button className="w-full px-6 py-3 bg-[#feda6a] text-black font-semibold rounded-lg hover:bg-[#feda6a]/90 transition-colors">
-                    Вернуться к проектам
+                <Link 
+                  href="/#projects" 
+                  className="block w-full"
+                >
+                  <button className="w-full px-6 py-3 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors flex items-center justify-center gap-2">
+                    <span>Назад к проектам</span>
+                    <svg 
+                      className="w-5 h-5" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" 
+                      />
+                    </svg>
                   </button>
                 </Link>
+
                 <a 
                   href={project.url} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="block w-full"
                 >
-                  <button className="w-full px-6 py-3 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors flex items-center justify-center gap-2">
+                  <button className="w-full px-6 py-3 bg-[#feda6a] text-black font-semibold rounded-lg hover:bg-[#feda6a]/90 transition-colors flex items-center justify-center gap-2">
                     <span>Перейти на сайт</span>
                     <svg 
                       className="w-5 h-5" 

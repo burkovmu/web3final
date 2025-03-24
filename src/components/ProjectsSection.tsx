@@ -37,7 +37,7 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section className="py-32 bg-[#111113] overflow-hidden">
+    <section id="projects" className="py-32 bg-[#111113] overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-start mb-20">
           <motion.span 
