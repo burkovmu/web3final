@@ -64,7 +64,7 @@ export default function ProjectsSection() {
           />
         </div>
 
-        <div className="space-y-24">
+        <div className="space-y-32">
           {projects.map((project, index) => (
             <Link 
               href={`/projects/${project.id}`} 
@@ -78,8 +78,9 @@ export default function ProjectsSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative"
               >
-                <div className="relative h-[600px] overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#111113] to-transparent z-10" />
+                <div className="relative h-[700px] overflow-hidden rounded-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-[#111113]/80 to-transparent z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111113] via-transparent to-transparent z-10" />
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -89,23 +90,23 @@ export default function ProjectsSection() {
                 </div>
 
                 <div className={`absolute top-1/2 -translate-y-1/2 ${index % 2 === 0 ? 'left-12' : 'right-12'} z-20 max-w-xl`}>
-                  <div className="space-y-6">
+                  <div className="space-y-8">
                     <div className="flex items-center gap-4">
                       <span className="text-[#feda6a] text-sm font-stolzl tracking-wider">
                         {String(index + 1).padStart(2, '0')}
                       </span>
-                      <h3 className="text-4xl font-stolzl text-white group-hover:text-[#feda6a] transition-colors duration-300">
+                      <h3 className="text-5xl font-stolzl text-white group-hover:text-[#feda6a] transition-colors duration-300">
                         {project.title}
                       </h3>
                     </div>
-                    <p className="text-gray-300 text-lg leading-relaxed">
+                    <p className="text-gray-200 text-xl leading-relaxed max-w-lg">
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full text-sm font-stolzl text-white border border-white/10 group-hover:border-[#feda6a]/30 transition-all duration-300"
+                          className="px-3 py-1.5 bg-white/5 backdrop-blur-sm rounded-full text-xs font-stolzl text-gray-400 border border-white/5 group-hover:bg-white/10 group-hover:text-gray-300 group-hover:border-white/10 transition-all duration-300"
                         >
                           {tech}
                         </span>
@@ -115,11 +116,11 @@ export default function ProjectsSection() {
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.5 + index * 0.1 }}
-                      className="flex items-center gap-2 text-[#feda6a] group-hover:gap-4 transition-all duration-300"
+                      className="flex items-center gap-3 text-[#feda6a] group-hover:gap-4 transition-all duration-300"
                     >
-                      <span className="text-sm font-stolzl">Подробнее</span>
+                      <span className="text-base font-stolzl">Подробнее</span>
                       <svg 
-                        className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
+                        className="w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300" 
                         fill="none" 
                         stroke="currentColor" 
                         viewBox="0 0 24 24"
