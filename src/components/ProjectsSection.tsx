@@ -2,42 +2,42 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import SectionWrapper from './SectionWrapper';
+import Link from 'next/link';
 
 const projects = [
   {
-    title: "Маркетплейс электроники",
-    description: "Разработка масштабируемой платформы для продажи электроники с системой рекомендаций и аналитикой",
-    image: "/project1.jpg",
-    tags: ["Next.js", "Node.js", "PostgreSQL", "Redis"],
-    size: "large"
+    id: 'project1',
+    title: 'Аренда автомобилей в Дубае',
+    description: 'Разработка современного веб-сайта для аренды автомобилей премиум-класса в Дубае с удобной системой бронирования и оплаты.',
+    image: '/project1.jpg',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS']
   },
   {
-    title: "Система управления отелем",
-    description: "Создание комплексного решения для автоматизации процессов бронирования и управления отелем",
-    image: "/project2.jpg",
-    tags: ["React", "Express", "MongoDB", "WebSocket"],
-    size: "small"
+    id: 'project2',
+    title: 'Аренда Спец Техники',
+    description: 'Создание специализированной платформы для аренды строительной и специальной техники с расширенным каталогом и системой управления заказами.',
+    image: '/project2.jpg',
+    technologies: ['Vue.js', 'Node.js', 'MongoDB', 'Express']
   },
   {
-    title: "Приложение для фитнеса",
-    description: "Разработка мобильного приложения для персональных тренировок с ИИ-тренером",
-    image: "/project3.jpg",
-    tags: ["React Native", "Python", "TensorFlow", "Firebase"],
-    size: "small"
+    id: 'project3',
+    title: 'Сервисный центр техники Apple',
+    description: 'Разработка современного сайта для сервисного центра по ремонту техники Apple с системой отслеживания статуса ремонта.',
+    image: '/project3.jpg',
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Express']
   },
   {
-    title: "Облачная CRM-система",
-    description: "Создание современной CRM-системы с расширенной аналитикой и интеграцией с популярными сервисами",
-    image: "/project4.jpg",
-    tags: ["Vue.js", "Go", "GraphQL", "AWS"],
-    size: "large"
+    id: 'project4',
+    title: 'Сайт для ресторана',
+    description: 'Создание современного сайта для ресторана с системой онлайн-бронирования столиков и доставки еды.',
+    image: '/project4.jpg',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js']
   }
 ];
 
 export default function ProjectsSection() {
   return (
-    <SectionWrapper className="bg-[#111113] py-32">
+    <section className="py-32 bg-[#111113] overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-start mb-20">
           <motion.span 
@@ -64,53 +64,81 @@ export default function ProjectsSection() {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="space-y-24">
           {projects.map((project, index) => (
-            <motion.div
+            <Link 
+              href={`/projects/${project.id}`} 
               key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 * (index + 2) }}
-              className={`group relative overflow-hidden rounded-lg bg-[#393f4d] ${
-                project.size === 'large' ? 'md:col-span-2' : ''
-              }`}
+              className={`group block ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}
             >
-              <div className={`relative overflow-hidden ${
-                project.size === 'large' ? 'h-[500px]' : 'h-[300px]'
-              }`}>
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1d1e22] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-20 group-hover:translate-y-0 transition-transform duration-700">
-                <div className="relative">
-                  <motion.div 
-                    className="absolute -left-4 -top-20 text-[#feda6a]/10 text-9xl font-stolzl select-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                  >
-                    {String(index + 1).padStart(2, '0')}
-                  </motion.div>
-                  <h3 className="text-2xl font-stolzl text-[#feda6a] mb-4">{project.title}</h3>
-                  <p className="text-[#d4d4dc]/80 mb-6">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="text-xs px-3 py-1 rounded-full bg-[#111113] text-[#feda6a]"
-                      >
-                        {tag}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative"
+              >
+                <div className="relative h-[600px] overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#111113] to-transparent z-10" />
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+
+                <div className={`absolute top-1/2 -translate-y-1/2 ${index % 2 === 0 ? 'left-12' : 'right-12'} z-20 max-w-xl`}>
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-4">
+                      <span className="text-[#feda6a] text-sm font-stolzl tracking-wider">
+                        {String(index + 1).padStart(2, '0')}
                       </span>
-                    ))}
+                      <h3 className="text-4xl font-stolzl text-white group-hover:text-[#feda6a] transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <p className="text-gray-300 text-lg leading-relaxed">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-3">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full text-sm font-stolzl text-white border border-white/10 group-hover:border-[#feda6a]/30 transition-all duration-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 + index * 0.1 }}
+                      className="flex items-center gap-2 text-[#feda6a] group-hover:gap-4 transition-all duration-300"
+                    >
+                      <span className="text-sm font-stolzl">Подробнее</span>
+                      <svg 
+                        className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M14 5l7 7m0 0l-7 7m7-7H3" 
+                        />
+                      </svg>
+                    </motion.div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
-    </SectionWrapper>
+    </section>
   );
 } 
